@@ -10,8 +10,8 @@ import pandas as pd
 import ast
 
 from fspmwheat import fspmwheat_postprocessing
-from example.Scenarios_Climate import main
-from example.Scenarios_Climate import tools
+from example.typical_year import main
+from example.Scenarios_monoculms import tools
 # from example.Scenarios_monoculms import additional_graphs
 
 
@@ -26,7 +26,7 @@ def run_fspmwheat(scenario_id=1, inputs_dirpath='inputs', outputs_dir_path='outp
 
     # Scenario to be run
     scenarios_df = pd.read_csv(os.path.join(inputs_dirpath, 'scenarios_list.csv'), index_col='Scenario')
-    scenarios_df['drought_trigger'].fillna(False, inplace=True)
+    #scenarios_df['drought_trigger'].fillna(False, inplace=True)
     scenario_conditions = scenarios_df.loc[scenario_id].to_dict()
     scenario_name = scenario_conditions['Scenario_label']
 
@@ -116,8 +116,10 @@ def run_fspmwheat(scenario_id=1, inputs_dirpath='inputs', outputs_dir_path='outp
                       POSTPROCESSING_DIRPATH=scenario_postprocessing_dirpath,
                       update_parameters_all_models=scenario_parameters,
                       tillers_replications=TILLERS,
-                      ADEL_SAVE=ADEL_SAVE,
-                      drought_trigger=drought_trigger, stop_drought_SRWC=stop_drought_SRWC)
+                      #ADEL_SAVE=ADEL_SAVE,
+                      #drought_trigger=drought_trigger, 
+                      #stop_drought_SRWC=stop_drought_SRWC
+                      )
             # if GENERATE_GRAPHS:
             #     additional_graphs.graph_summary(scenario_id, scenario_graphs_dirpath,
             #                                     graph_list=['LAI', 'sum_dry_mass_axis', 'shoot_roots_ratio_axis', 'N_content_shoot_axis', 'Conc_Amino_acids_phloem', 'Conc_Sucrose_phloem', 'leaf_Lmax',

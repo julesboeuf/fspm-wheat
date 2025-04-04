@@ -79,7 +79,7 @@ def main(simulation_length, forced_start_time=0, run_simu=True, run_postprocessi
     :param bool show_3Dplant: whether to plot the scene in pgl viewer
     :param dict [str, float] tillers_replications: a dictionary with tiller id as key, and weight of replication as value.
     :param bool heterogeneous_canopy: Whether to create a duplicated heterogeneous canopy from the initial mtg.
-    :param dict [int, float] or [str, float] N_fertilizations: a dictionary for N fertilisation regime {date: N_input}, with date in hour and N_input in µmol N nitrates
+    :param dict [int, float] or [str, float] N_fertilizations: a dictionary for N fertilisation regime {date: N_input}, with date in hour and N_input in ï¿½mol N nitrates
                                                or {'constant_Conc_Nitrates': val} for constant nitrates concentrations
     :param dict [int, int] PLANT_DENSITY: a dict with plant density per plant id (temporary used to account for different cultivars if needed) ; plant m-2
     :param dict update_parameters_all_models: a dict to update model parameters
@@ -236,7 +236,7 @@ def main(simulation_length, forced_start_time=0, run_simu=True, run_postprocessi
 
     # read adelwheat inputs at t0
     adel_wheat = AdelDyn(seed=1, scene_unit='m', leaves=echap_leaves(xy_model='Soissons_byleafclass'))
-    g = adel_wheat.load(dir=INPUTS_DIRPATH)
+    g = adel_wheat.load(directory=INPUTS_DIRPATH)
 
     # ---------------------------------------------
     # ----- CONFIGURATION OF THE FACADES -------
@@ -829,7 +829,7 @@ def main(simulation_length, forced_start_time=0, run_simu=True, run_postprocessi
         ax1.plot(list(rer_param.keys()), list(rer_param.values()), marker='*', color='k', linestyle='', label="Model parameters")
 
         # Formatting
-        ax1.set_ylabel(u'Relative Elongation Rate at 12°C (s$^{-1}$)')
+        ax1.set_ylabel(u'Relative Elongation Rate at 12ï¿½C (s$^{-1}$)')
         ax1.legend(prop={'size': 12}, bbox_to_anchor=(0.05, .6, 0.9, .5), loc='upper center', ncol=3, mode="expand", borderaxespad=0.)
         ax1.legend(loc='upper left')
         ax1.set_xlabel('Phytomer rank')
@@ -871,7 +871,7 @@ def main(simulation_length, forced_start_time=0, run_simu=True, run_postprocessi
 
         ax.set_xlabel('Days')
         ax2.set_ylim([0, 200])
-        ax.set_ylabel(u'C (µmol C.day$^{-1}$ )')
+        ax.set_ylabel(u'C (ï¿½mol C.day$^{-1}$ )')
         ax2.set_ylabel(u'Ratio (%)')
         ax.set_title('C allocation to roots')
         plt.savefig(os.path.join(GRAPHS_DIRPATH, 'C_allocation.PNG'), dpi=200, format='PNG', bbox_inches='tight')
@@ -1020,4 +1020,5 @@ if __name__ == '__main__':
          show_3Dplant=False,
          option_static=False, tillers_replications={'T1': 0.5, 'T2': 0.5, 'T3': 0.5, 'T4': 0.5},
          heterogeneous_canopy=True, N_fertilizations={2016: 357143, 2520: 1000000},
-         PLANT_DENSITY={1: 250}, METEO_FILENAME='meteo_Ljutovac2002.csv')
+         PLANT_DENSITY={1: 250}, METEO_FILENAME='HIST_2010.csv',
+         OUTPUTS_DIRPATH='HIST_2010', POSTPROCESSING_DIRPATH='HIST_2010', GRAPHS_DIRPATH='HIST_2010')

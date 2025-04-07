@@ -106,7 +106,7 @@ def run_fspmwheat(scenario_id=1, inputs_dirpath='inputs', outputs_dir_path='outp
         print(scenario_name)
         try:
             main.main(simulation_length=SIMULATION_LENGTH,
-                      run_simu=RUN_SIMU, run_postprocessing=RUN_POSTPROCESSING, generate_graphs=GENERATE_GRAPHS, run_from_outputs=False, forced_start_time=1176,
+                      run_simu=RUN_SIMU, run_postprocessing=RUN_POSTPROCESSING, generate_graphs=GENERATE_GRAPHS, run_from_outputs=False, forced_start_time=0,
                       METEO_FILENAME=scenario_meteo,
                       N_fertilizations=N_FERTILIZATIONS,
                       PLANT_DENSITY={1: 250},
@@ -116,6 +116,7 @@ def run_fspmwheat(scenario_id=1, inputs_dirpath='inputs', outputs_dir_path='outp
                       POSTPROCESSING_DIRPATH=scenario_postprocessing_dirpath,
                       update_parameters_all_models=scenario_parameters,
                       tillers_replications=TILLERS,
+                      show_3Dplant=False
                       #ADEL_SAVE=ADEL_SAVE,
                       #drought_trigger=drought_trigger, 
                       #stop_drought_SRWC=stop_drought_SRWC

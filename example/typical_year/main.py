@@ -196,7 +196,9 @@ def main(simulation_length, forced_start_time=0, run_simu=True, run_postprocessi
 
     # Name of the CSV files which contains the meteo data
     meteo = pd.read_csv(os.path.join(INPUTS_DIRPATH, METEO_FILENAME), index_col='t')
-
+    print(meteo.columns)
+    print(meteo.dtypes)
+    print(meteo.head())
     # -- OUTPUTS CONFIGURATION --
 
     # Save the outputs with a full scan of the MTG at each time step (or at selected time steps)
